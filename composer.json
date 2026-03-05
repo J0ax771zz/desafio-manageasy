@@ -1,0 +1,11 @@
+{
+    "name": "joaom/desafio-manageasy",
+    "autoload": {
+        "psr-4": {
+            "Joaom\\DesafioManageasy\\": "src/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

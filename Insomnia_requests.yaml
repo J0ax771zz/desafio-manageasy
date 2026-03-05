@@ -1,0 +1,162 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Desafio Manageasy
+meta:
+  id: wrk_aa39b9bc513b4b7c8e4ca33656e36091
+  created: 1772663767307
+  modified: 1772663767307
+  description: ""
+collection:
+  - url: http://localhost/desafio-manageasy/public/api.php?search=alice&page=1&limit=15
+    name: New Request
+    meta:
+      id: req_2522b268879b45d0a67a604ab99b1136
+      created: 1772663775858
+      modified: 1772726148437
+      isPrivate: false
+      description: ""
+      sortKey: -1772663775858
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost/desafio-manageasy/public/api.php
+    name: New Request
+    meta:
+      id: req_c4e776ff9e1a42449c46a4325c5e0aa1
+      created: 1772665316719
+      modified: 1772665341814
+      isPrivate: false
+      description: ""
+      sortKey: -1772665316719
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Teste Novo",
+          "email": "testenovo@email.com",
+          "telefone": "11988887777",
+          "data_nascimento": "2001-04-10",
+          "image_url": "https://teste.com/foto.jpg"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost/desafio-manageasy/public/api.php?id=13
+    name: New Request
+    meta:
+      id: req_a7e9ff629e6346c5ad3e3b53e2c780a2
+      created: 1772665651537
+      modified: 1772665791901
+      isPrivate: false
+      description: ""
+      sortKey: -1772665651537
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost/desafio-manageasy/public/api.php?id=12
+    name: New Request
+    meta:
+      id: req_e1d03889c0a6413dade2806085e5248d
+      created: 1772665748598
+      modified: 1772666808049
+      isPrivate: false
+      description: ""
+      sortKey: -1772665748598
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        			"nome": "João Moscardi",
+        			"email": "joamoscardi15@gmail.com",
+        			"telefone": "11942815",
+        			"data_nascimento": "2001-04-10",
+        			"image_url": null,
+        			"created_at": "2026-03-04 20:08:03"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost/desafio-manageasy/public/api.php
+    name: New Request
+    meta:
+      id: req_eae455034d5a4556ad4a33bd2ea908cb
+      created: 1772668087427
+      modified: 1772668096809
+      isPrivate: false
+      description: ""
+      sortKey: -1772668087427
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.3.1
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7bd6e66ef53de808e2074cf681c9228cfc041916
+    created: 1772663767312
+    modified: 1772663767312
+environments:
+  name: Base Environment
+  meta:
+    id: env_7bd6e66ef53de808e2074cf681c9228cfc041916
+    created: 1772663767309
+    modified: 1772663767309
+    isPrivate: false
