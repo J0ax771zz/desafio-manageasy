@@ -6,7 +6,6 @@ $(document).ready(function () {
     const modalBootstrap = new bootstrap.Modal(document.getElementById('modalContato'));
     const toastBootstrap = new bootstrap.Toast(document.getElementById('toastNotificacao'));
 
-    // --- LOCAL STORAGE: Recuperar Filtro ao Iniciar ---
     const filtroSalvo = localStorage.getItem('filtro-gerenciador');
     if (filtroSalvo) {
         $("#filtro-busca").val(filtroSalvo);
@@ -31,7 +30,6 @@ $(document).ready(function () {
         const termoBusca = $("#filtro-busca").val();
         paginaAtual = pagina;
 
-        // --- LOCAL STORAGE: Salvar Filtro ao Buscar ---
         localStorage.setItem('filtro-gerenciador', termoBusca);
 
         $.ajax({
@@ -88,7 +86,6 @@ $(document).ready(function () {
         $("#paginacao").html(htmlPaginacao);
     }
 
-    // --- LOGICA DO MODAL ---
 
     $("#btn-novo-contato").on("click", function() {
         $("#form-contato")[0].reset();
@@ -97,17 +94,13 @@ $(document).ready(function () {
         $("#modalTitulo").text("Novo Contato");
         modalBootstrap.show();
     });
-
-    // EDITAR: Com correção de cache e limpeza total
-    // Abrir para EDITAR
 $(document).on("click", ".btn-editar", function () {
     const id = $(this).data("id");
     const $btn = $(this);
     
-    // 1. Bloqueia o botão para evitar múltiplos cliques
+    
     $btn.prop('disabled', true); 
 
-    // 2. LIMPEZA MANUAL FORÇADA (Zera tudo antes da requisição)
     $("#contato-id").val("");
     $("#nome").val("");
     $("#email").val("");
@@ -116,14 +109,12 @@ $(document).on("click", ".btn-editar", function () {
     $("#form-contato").removeClass("was-validated");
     $("#modalTitulo").text("Carregando dados...");
 
-    // 3. Busca os dados com prevenção de cache
     $.ajax({
         url: apiURL,
         type: "GET",
         data: { id: id, _t: new Date().getTime() }, 
         dataType: "json",
         success: function(response) {
-            // Tenta extrair o contato de diferentes formatos de retorno
             let c = null;
             if (response.data) {
                 c = Array.isArray(response.data) ? response.data[0] : response.data;
@@ -132,7 +123,6 @@ $(document).on("click", ".btn-editar", function () {
             }
 
             if (c) {
-                // 4. Preenche os campos UM POR UM garantindo os novos valores
                 $("#contato-id").val(c.id);
                 $("#nome").val(c.nome);
                 $("#email").val(c.email);
@@ -141,7 +131,6 @@ $(document).on("click", ".btn-editar", function () {
                 
                 $("#modalTitulo").text("Editar Contato #" + c.id);
                 
-                // 5. SÓ ABRE O MODAL AGORA, com os dados já injetados
                 modalBootstrap.show();
             } else {
                 exibirToast("Erro: Contato não encontrado no banco.", "danger");
@@ -151,7 +140,6 @@ $(document).on("click", ".btn-editar", function () {
             exibirToast("Erro de comunicação com o servidor.", "danger");
         },
         complete: function() {
-            // 6. Libera o botão da tabela
             $btn.prop('disabled', false);
         }
     });
@@ -210,7 +198,6 @@ $(document).on("click", ".btn-editar", function () {
         }
     });
 
-    // Botão Limpar: Além de limpar o campo, limpa o LocalStorage
     $("#btn-limpar").on("click", function() {
         $("#filtro-busca").val("");
         localStorage.removeItem('filtro-gerenciador');
@@ -224,6 +211,5 @@ $(document).on("click", ".btn-editar", function () {
         buscarContatos($(this).data("pagina"));
     });
 
-    // Inicia a busca
     buscarContatos(paginaAtual);
 });
